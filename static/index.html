@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="hu">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>OBS Now Playing</title>
+		<script src="/socket.io/socket.io.min.js"></script>
+		<link
+			rel="stylesheet"
+			href="/styles/index.min.css" />
+	</head>
+
+	<body>
+		<div
+			id="nowPlaying"
+			data-open="false">
+			<div id="image">
+				<img
+					id="ytmusic"
+					src="/images/ytm.webp" />
+				<img
+					id="thumbnail"
+					src="" />
+			</div>
+			<div id="wrapper">
+				<div id="content-container">
+					<span
+						class="content"
+						id="track"></span>
+					<span
+						class="content"
+						id="artist"></span>
+				</div>
+			</div>
+		</div>
+
+		<script src="/scripts/index.min.js"></script>
+	</body>
+</html>
