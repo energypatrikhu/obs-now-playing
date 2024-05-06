@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import getVideoData from '../utils/getVideoData';
+import moment from 'moment';
 
 const router = Router();
 
@@ -38,7 +39,10 @@ router.post('/nowPlaying', async (req, res) => {
 	}
 
 	req.app.locals.ytPlayingNext = {
-		reAlert: time,
+		reAlert:
+			moment(time)
+				.add(videoData.duration - 45, 'seconds')
+				.unix() * 1000,
 		artist: videoData.artist,
 		track: videoData.track,
 		thumbnail: videoData.thumbnail,

@@ -76,6 +76,7 @@ export default async function getVideoData(
 			album,
 			thumbnails,
 			thumbnail,
+			duration,
 		} = await ytdl(referer, { ...infoYtdlOptions, referer });
 
 		const splitter = splitters.find((_splitter) =>
@@ -108,6 +109,7 @@ export default async function getVideoData(
 			artist,
 			track,
 			thumbnail: getThumbnail(thumbnails, thumbnail),
+			duration,
 		};
 	} catch {
 		if (prefixes.yt === forceReferer) {
