@@ -43,7 +43,7 @@ body {
 	width: -webkit-max-content;
 	width: -moz-max-content;
 	width: max-content;
-	background: hsl(0 0% 0% / 60%);
+	background: hsl(0 0% 0% / 80%);
 	position: absolute;
 	-webkit-box-pack: space-evenly;
 	-ms-flex-pack: space-evenly;
@@ -113,6 +113,11 @@ body {
 
 #artist {
 	font-size: 20px;
+}
+
+#artist,
+#track {
+	text-shadow: 0 0 5px black;
 }
 
 #nowPlaying[data-open='false'] {
