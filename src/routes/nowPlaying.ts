@@ -38,13 +38,16 @@ router.post('/nowPlaying', async (req, res) => {
 		});
 	}
 
+	const duration = videoData.duration - 40;
+	const reAlerts = [
+		moment(time).unix() * 1000,
+		moment(time).add(duration, 'seconds').unix() * 1000,
+	];
+
 	req.app.locals.ytPlayingNext = {
-		reAlert:
-			moment(time)
-				.add(videoData.duration - 45, 'seconds')
-				.unix() * 1000,
-		artist: videoData.artist,
+		reAlerts,
 		track: videoData.track,
+		artist: videoData.artist,
 		thumbnail: videoData.thumbnail,
 	};
 

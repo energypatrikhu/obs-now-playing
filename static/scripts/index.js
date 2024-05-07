@@ -32,31 +32,37 @@
 	const animDelay = 3.2;
 	const showTime = 16;
 
-	let _addPulse, _removePulse, _close, _reAlert;
+	let _addPulse, _removePulse, _close;
+	const _reAlerts = [];
 
 	let _data = {};
 
 	socket.on('nowPlaying', (data) => {
 		if (_data != data) {
-			HTML__artist.innerText = data.artist;
-			HTML__track.innerText = data.track;
+			HTML__artist.textContent = data.artist;
+			HTML__track.textContent = data.track;
 			HTML__thumbnail.src = data.thumbnail;
 
 			_data = data;
 
-			_alert();
-			// @ts-ignore
-			_reAlert = setTimeout(_alert, new Date(data.reAlert) - new Date());
+			for (const reAlert of data.reAlerts) {
+				// @ts-ignore
+				const timeout = new Date(reAlert) - new Date();
+				_reAlerts.push(setTimeout(_alert, timeout));
+			}
 		}
 	});
 
 	function _alert() {
+		console.time('alert');
 		HTML__nowPlaying?.setAttribute('data-open', 'true');
 
 		clearTimeout(_addPulse);
 		clearTimeout(_removePulse);
 		clearTimeout(_close);
-		clearTimeout(_reAlert);
+		for (const reAlert of _reAlerts) {
+			clearTimeout(reAlert);
+		}
 
 		_addPulse = setTimeout(() => {
 			HTML__nowPlaying?.classList.add('enablePulse');
@@ -67,6 +73,7 @@
 
 		_close = setTimeout(() => {
 			HTML__nowPlaying?.setAttribute('data-open', 'false');
+			console.timeEnd('alert');
 		}, (showTime + animDelay) * 1000);
 	}
 })();

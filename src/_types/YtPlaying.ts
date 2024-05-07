@@ -1,5 +1,5 @@
 export default interface YtPlaying {
-	reAlert: number;
+	reAlerts: number[];
 	artist: string;
 	track: string;
 	thumbnail: string;
