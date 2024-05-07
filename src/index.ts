@@ -1,5 +1,5 @@
 import express from 'express';
-// import moment from 'moment';
+import moment from 'moment';
 import { Server } from 'socket.io';
 import { createServer } from 'http';
 import cors, { type CorsOptions } from 'cors';
@@ -7,7 +7,6 @@ import { join } from 'node:path';
 
 import mainRouter from './routes/main';
 import nowPlayingRouter from './routes/nowPlaying';
-import moment from 'moment';
 
 const PORT = process.env.PORT || 2442;
 
