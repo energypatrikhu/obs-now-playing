@@ -1,9 +1,5 @@
 import { SpawnOptions } from 'child_process';
-import {
-	// youtubeDl,
-	create as createYoutubeDl,
-	type Flags,
-} from 'youtube-dl-exec';
+import { create as createYoutubeDl, type Flags } from 'youtube-dl-exec';
 import type YtData from '../_types/YtData';
 
 export default async function ytdl(
@@ -13,5 +9,4 @@ export default async function ytdl(
 ): Promise<YtData> {
 	const youtubeDlExec = createYoutubeDl('./utils/yt-dlp.exe');
 	return youtubeDlExec(url, flags, options) as any;
-	// return youtubeDl(url, flags, options) as any;
 }
