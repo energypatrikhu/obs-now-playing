@@ -41,6 +41,13 @@
 
 	socket.on('nowPlaying', (data) => {
 		if (_data != data) {
+			clearTimeout(_addPulse);
+			clearTimeout(_removePulse);
+			clearTimeout(_close);
+			for (const reAlert of _reAlerts) {
+				clearTimeout(reAlert);
+			}
+
 			HTML__artist.textContent = data.artist;
 			HTML__track.textContent = data.track;
 			HTML__thumbnail.src = data.thumbnail;
@@ -57,13 +64,6 @@
 
 	function _alert() {
 		HTML__nowPlaying?.setAttribute('data-open', 'true');
-
-		clearTimeout(_addPulse);
-		clearTimeout(_removePulse);
-		clearTimeout(_close);
-		for (const reAlert of _reAlerts) {
-			clearTimeout(reAlert);
-		}
 
 		_addPulse = setTimeout(() => {
 			HTML__nowPlaying?.classList.add('enablePulse');
