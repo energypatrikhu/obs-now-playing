@@ -66,7 +66,7 @@ server.listen(PORT, () => {
 	msg += `\n - Done!`;
 	msg += `\n> = = = = = = = = = = < Usage : Extension > = = = = = = = = = <`;
 	msg += `\n\n`;
-	msg += `\nThe extension will detect the now playing video/music from YouTube & YT Music and display it on OBS through the OBS Browser Source.`;
+	msg += `\nThe extension detects the now playing video/music from the Browser and display it on OBS through the OBS Browser Source.`;
 	msg += `\n\n`;
 	msg += `\n> App & Extension by EnergyPatrikHU <`;
 
