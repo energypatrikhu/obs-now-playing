@@ -38,7 +38,7 @@ router.post('/nowPlaying', async (req, res) => {
 		});
 	}
 
-	const duration = videoData.duration - 40;
+	const duration = videoData.duration - (24 + 13.2);
 	const reAlerts = [
 		moment(time).unix() * 1000,
 		moment(time).add(duration, 'seconds').unix() * 1000,
