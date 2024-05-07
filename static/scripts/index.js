@@ -1,20 +1,22 @@
 (async () => {
+	const qS = (selectors) => document.querySelector(selectors);
+
 	/**
 	 * @type {HTMLDivElement | null}
 	 */
-	const HTML__nowPlaying = document.querySelector('#nowPlaying');
+	const HTML__nowPlaying = qS('#nowPlaying');
 	/**
 	 * @type {HTMLSpanElement | null}
 	 */
-	const HTML__artist = document.querySelector('#artist');
+	const HTML__artist = qS('#artist');
 	/**
 	 * @type {HTMLSpanElement | null}
 	 */
-	const HTML__track = document.querySelector('#track');
+	const HTML__track = qS('#track');
 	/**
 	 * @type {HTMLImageElement | null}
 	 */
-	const HTML__thumbnail = document.querySelector('#thumbnail');
+	const HTML__thumbnail = qS('#thumbnail');
 
 	if (
 		!HTML__nowPlaying ||
@@ -30,7 +32,7 @@
 
 	// seconds
 	const animDelay = 3.2;
-	const showTime = 16;
+	const showTime = 24;
 
 	let _addPulse, _removePulse, _close;
 	const _reAlerts = [];
@@ -54,7 +56,6 @@
 	});
 
 	function _alert() {
-		console.time('alert');
 		HTML__nowPlaying?.setAttribute('data-open', 'true');
 
 		clearTimeout(_addPulse);
@@ -73,7 +74,6 @@
 
 		_close = setTimeout(() => {
 			HTML__nowPlaying?.setAttribute('data-open', 'false');
-			console.timeEnd('alert');
 		}, (showTime + animDelay) * 1000);
 	}
 })();
