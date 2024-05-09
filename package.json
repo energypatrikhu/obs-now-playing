@@ -8,9 +8,9 @@
 		"compile": "node-exe-compile && node patch.mjs"
 	},
 	"devDependencies": {
-		"@energypatrikhu/node-exe-compile": "^0.0.3",
+		"@energypatrikhu/node-exe-compile": "^0.0.12",
 		"@types/express": "^4.17.21",
-		"@types/node": "^20.12.8",
+		"@types/node": "^20.12.11",
 		"typescript": "^5.4.5"
 	},
 	"dependencies": {
